@@ -135,7 +135,9 @@ int main() {
 			}
 		    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
 				clicks = 0;
-				times = malloc(sig * sizeof(float));
+				if (times[clicks]) {
+					times = malloc(sig * sizeof(float));
+				}
 			}
 		}
 
