@@ -9,7 +9,7 @@
 #include "src/draw.c"
 #include "src/font.h"
 
-#define size 15 //size of the "blips"
+#define size 25 //size of the "blips"
 #define WINDOW_WIDTH 200
 #define WINDOW_HEIGHT 200
 
@@ -66,9 +66,14 @@ void render() {
 	float black[3] = {0, 0, 0}; // text color def.
 	glColor3fv(black); // text color call
 
-	char buf[100] = "...";
-	if (!isinf(bpm)) {
-		gcvt(bpm, 5, buf);
+	char buf[100];
+	if (clicks == 0) {
+		char buf[100] = "...";
+		bpm = 0;
+	} else {
+		if (!isinf(bpm)) {
+			gcvt(bpm, 5, buf);
+		}
 	}
 	printString(buf, (WINDOW_WIDTH / 2) - (4 * 8), WINDOW_HEIGHT / 2); // text, X, Y
 	// scary hardcoded vars here ^^^
@@ -123,14 +128,16 @@ int main() {
 				} else {
 					clicks++;
 				}
-    			//printf("%d\n", clicks);
 				times[clicks] = now;
-				//printf("%f\n", times[clicks]);
+
+				// :^)
+				bpm = 60 / times[sig] * sig;
+			}
+		    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+				clicks = 0;
+				times = malloc(sig * sizeof(float));
 			}
 		}
-
-		// :^)
-		bpm = 60 / times[sig] * sig;
 
 		glfwSetMouseButtonCallback(window, mouse_button_callback);
 
