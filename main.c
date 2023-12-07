@@ -66,7 +66,7 @@ void render() {
 	float black[3] = {0, 0, 0}; // text color def.
 	glColor3fv(black); // text color call
 
-	char buf[100];
+	char buf[100] = "...";
 	if (clicks == 0) {
 		char buf[100] = "...";
 		bpm = 0;
