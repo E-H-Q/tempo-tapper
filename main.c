@@ -131,7 +131,9 @@ int main() {
 				times[clicks] = now;
 
 				// :^)
-				bpm = 60 / times[sig] * sig;
+				//bpm = 60 / times[sig] * sig; //original
+				bpm = (60 / times[sig] * sig) - 25; //??? corrects the BPM for some reason
+				//printf("%f\n", times[clicks]);
 			}
 		    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
 				clicks = 0;
