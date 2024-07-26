@@ -91,7 +91,7 @@ int main() {
 	GLFWwindow* window;
 	// Create a windowed mode window & its OpenGL context
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "BMP tapper", NULL, NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "BPM tapper", NULL, NULL);
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
 	// Set up the "camera" view
